@@ -115,7 +115,7 @@ a:hover {
 }
 
 .nav-list .nav-link {
-    color: #fff; /* Color de enlace blanco para que se lea contra el fondo transparente */
+    color: #000000; /* Color de enlace blanco para que se lea contra el fondo transparente */
     font-weight: 600;
     font-size: 20px;
     transition: color 0.3s ease, transform 0.2s ease;
@@ -131,8 +131,9 @@ a:hover {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--dark-color);
     transition: width 0.3s ease;
+    color:black
 }
 
 .nav-list .nav-link:hover::after {
@@ -570,7 +571,7 @@ details p {
 /* Botón volver arriba */
 #btnArriba {
     position: fixed;
-    bottom: 150px; /* Ajustado para evitar superposición */
+    bottom: 200px; /* Ajustado para evitar superposición */
     right: 25px;
     background: var(--dark-color);
     color: #fff;
@@ -610,19 +611,22 @@ details p {
         height: 0;
         overflow: hidden;
         transform: translateY(-100%);
-        background: rgba(19, 32, 37, 0.9);
+        background: rgba(255, 255, 255, 0.8);
         border-radius: 0 0 10px 10px;
+        transition: height 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     .nav-menu.open {
         height: auto;
         transform: translateY(0);
         padding: 1rem 0;
+        
     }
     
     .nav-list {
         flex-direction: column;
         align-items: center;
+        
     }
 
     .hero-title {

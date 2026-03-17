@@ -178,13 +178,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            // Si el formulario es válido, enviamos los datos con EmailJS
             if (formIsValid) {
-                formResponse.innerHTML = `
-                    <div class="success-message">
-                        ¡Gracias por contactarnos! Te responderemos pronto.
-                    </div>
-                `;
-                contactForm.reset();
+                // 1. Cambiamos el texto del botón para que diga "Enviando..."
+                const submitBtn = contactForm.querySelector('.submit-button');
+                const originalBtnText = submitBtn.textContent;
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+
+                // 2. Tomamos los datos que escribió el usuario en el formulario
+                const templateParams = {
+                    nombre: document.getElementById('nombre').value,
+                    telefono: document.getElementById('telefono').value,
+                    email: document.getElementById('email').value,
+                    mensaje: document.getElementById('mensaje').value
+                };
+
+                // 3. Enviamos el correo usando tus credenciales de EmailJS
+                emailjs.send('service_iluflaf', 'template_p36wghj', templateParams)
+                    .then(() => {
+                        // Si se envió bien, mostramos el mensaje de éxito
+                        formResponse.innerHTML = `
+                            <div class="success-message">
+                                ¡Gracias por contactarnos! Te responderemos pronto.
+                            </div>
+                        `;
+                        contactForm.reset();
+                    })
+                    .catch((error) => {
+                        // Si falló, mostramos un error en la consola y al usuario
+                        console.error('Error al enviar:', error);
+                        formResponse.innerHTML = `
+                            <div class="invalid-feedback" style="display: block;">
+                                Hubo un problema al enviar el mensaje. Por favor, intentá de nuevo.
+                            </div>
+                        `;
+                    })
+                    .finally(() => {
+                        // 4. Volvemos el botón a la normalidad
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
             } else {
                 formResponse.innerHTML = ``;
             }

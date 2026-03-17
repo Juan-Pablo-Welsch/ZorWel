@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const formResponse = document.getElementById('formResponse');
     const readMoreCardBtns = document.querySelectorAll('.read-more-card-btn');
+    const detailsElements = document.querySelectorAll('details'); // <-- Variable unificada arriba
 
     // --- Lógica del Menú de Navegación Móvil ---
     if (navToggle && navMenu) {
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Efecto de Máquina de Escribir con múltiples frases (AHORA CON CURSOR CSS) ---
+    // --- Efecto de Máquina de Escribir ---
     if (typedTextElement) {
         const phrases = [
             "Diseño web moderno.",
@@ -80,33 +81,28 @@ document.addEventListener('DOMContentLoaded', () => {
         let phraseIndex = 0;
         let charIndex = 0;
 
-        // Crear el elemento del cursor una vez
         const cursor = document.createElement('span');
         cursor.classList.add('typed-cursor');
         typedTextElement.appendChild(cursor);
 
         function type() {
             if (charIndex < phrases[phraseIndex].length) {
-                // Agregar un carácter y mover el cursor al final
                 typedTextElement.textContent = phrases[phraseIndex].substring(0, charIndex + 1);
                 typedTextElement.appendChild(cursor);
                 charIndex++;
                 setTimeout(type, typingDelay);
             } else {
-                // Dejar el cursor parpadeando al final del texto
                 setTimeout(erase, newPhraseDelay);
             }
         }
 
         function erase() {
             if (charIndex > 0) {
-                // Eliminar un carácter
                 typedTextElement.textContent = phrases[phraseIndex].substring(0, charIndex - 1);
                 typedTextElement.appendChild(cursor);
                 charIndex--;
                 setTimeout(erase, eraseDelay);
             } else {
-                // Pasar a la siguiente frase y comenzar a escribir
                 phraseIndex++;
                 if (phraseIndex >= phrases.length) {
                     phraseIndex = 0;
@@ -115,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Iniciar el efecto después de un breve retraso
         setTimeout(type, newPhraseDelay);
     }
     
@@ -147,6 +142,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Lógica de Preguntas Frecuentes (Cierra las otras al abrir una) ---
+    detailsElements.forEach(details => {
+        details.addEventListener('toggle', () => {
+            if (details.open) {
+                detailsElements.forEach(otherDetails => {
+                    if (otherDetails !== details && otherDetails.open) {
+                        otherDetails.removeAttribute('open');
+                    }
+                });
+            }
+        });
+    });
     
     // --- Lógica y Validación del Formulario de Contacto ---
     if (contactForm) {
@@ -156,14 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const formInputs = contactForm.querySelectorAll('input, textarea');
             let formIsValid = true;
 
-            // Eliminar clases de validación previas
             formInputs.forEach(input => {
                 input.classList.remove('invalid');
                 const formGroup = input.closest('.form-group');
                 if (formGroup) formGroup.classList.remove('invalid');
             });
 
-            // Validar cada campo
             formInputs.forEach(input => {
                 if (input.hasAttribute('required') && !input.value.trim()) {
                     formIsValid = false;
@@ -172,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Si el formulario es válido, mostrar mensaje de éxito
             if (formIsValid) {
                 formResponse.innerHTML = `
                     <div class="success-message">
@@ -185,24 +190,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // ... tu código JS existente ...
-
-    // Cierra todas las otras preguntas cuando se abre una nueva
-    const detailsElements = document.querySelectorAll('details');
-
-    detailsElements.forEach(details => {
-        details.addEventListener('toggle', () => {
-            if (details.open) {
-                // Si este 'details' se acaba de abrir, cierra los demás
-                detailsElements.forEach(otherDetails => {
-                    if (otherDetails !== details && otherDetails.open) {
-                        otherDetails.removeAttribute('open');
-                    }
-                });
-            }
-        });
-    });
 });

@@ -971,26 +971,28 @@ details p {
 }
 
 /* Animaciones */
+/* El punto ahora viaja más lento y elegante */
 @keyframes moveDot {
-    0% {
-        left: 0;
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    10% {
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1);
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        left: 100%;
-        opacity: 0;
-        transform: scale(0.8);
-    }
+    0% { left: 0; opacity: 0; transform: scale(0.8); }
+    15% { opacity: 1; transform: scale(1.2); } /* Brilla al salir */
+    85% { opacity: 1; transform: scale(1.2); }
+    100% { left: 100%; opacity: 0; transform: scale(0.8); }
+}
+
+/* El mensaje final aparece justo cuando el punto llega */
+.hero-animation.active .message-end {
+    animation: popIn 0.6s ease forwards;
+    animation-delay: 3.2s; /* Espera a que el punto recorra la línea */
+}
+
+/* El punto ahora tarda 3.5 segundos en cruzar */
+.hero-animation.active .dot {
+    animation: moveDot 3.5s ease-in-out forwards;
+}
+
+/* El primer mensaje aparece suave */
+.hero-animation.active .message-start {
+    animation: showMessage 0.8s forwards;
 }
 @keyframes popIn {
     0% {

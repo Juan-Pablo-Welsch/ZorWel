@@ -940,7 +940,7 @@ details p {
     border: 1px solid rgba(125, 205, 231, 0.3);
     padding: 10px 15px;
     border-radius: 10px;
-    color: #fff;
+    color: #7dcde7;
     font-weight: 500;
 }
 .message-start {
@@ -1036,4 +1036,79 @@ details p {
 .hero-animation.active .message-end {
     animation: showMessage 0.5s forwards;
     animation-delay: 1.8s;
+}
+
+
+.hero-animation .message {
+    opacity: 0; /* Empiezan invisibles */
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* ... el resto de tus estilos de borde y fondo ... */
+}
+
+/* El punto también tiene que nacer invisible */
+.hero-animation .dot {
+    opacity: 0;
+}
+
+/* Definimos las animaciones de entrada y SALIDA */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    15% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Aplicamos la animación solo cuando la clase 'active' está presente */
+.hero-animation.active .message-start {
+    animation: fadeInOut 4s forwards;
+}
+
+.hero-animation.active .message-end {
+    animation: fadeInOut 2.5s forwards;
+    animation-delay: 2.5s; /* Aparece después de que el punto viaja */
+}
+
+.hero-animation.active .dot {
+    animation: moveDot 2s forwards;
+    animation-delay: 1s; /* El punto sale 1 segundo después del primer mensaje */
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Grande y audaz */
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1; /* Unimos las líneas para que se vea como un bloque sólido */
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+/* El toque de Agencia: Degradado en el texto */
+.text-gradient {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+/* La parte de "amanecer" la hacemos más sutil */
+.hero-tagline {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6); /* Un blanco lavado para que no distraiga */
+    margin-top: 15px;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* En el celu lo ajustamos para que no se rompa */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-tagline {
+        font-size: 1rem;
+    }
 }

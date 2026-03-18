@@ -91,6 +91,13 @@ a:hover {
     padding-left: 10px;
 }
 
+.navbar-brand .brand-text:hover {
+    color: var(--primary-color); /* Que brille en celeste al pasar el mouse */
+    opacity: 1;
+    transform: translateY(-2px);
+    
+}
+
 .navbar-toggler {
     background: transparent;
     border: none;

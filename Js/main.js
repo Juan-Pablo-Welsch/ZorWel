@@ -233,16 +233,25 @@ document.addEventListener('DOMContentLoaded', () => {
 const heroAnimation = document.querySelector('.hero-animation');
 
 if (heroAnimation) {
-
     function runAnimation() {
-    heroAnimation.classList.add('active');
-
-    // Resetear después de que termina (le damos más tiempo, 4 segundos)
-    setTimeout(() => {
+        // 1. Limpiamos cualquier rastro anterior
         heroAnimation.classList.remove('active');
-    }, 4000); 
-}
+        
+        // 2. Pequeño delay de 500ms antes de arrancar (página vacía)
+        setTimeout(() => {
+            heroAnimation.classList.add('active');
+        }, 500);
 
-// Loop cada 5.5 segundos para que haya un respiro entre animaciones
-setInterval(runAnimation, 5500);
+        // 3. Duración total del ciclo (por ejemplo 6 segundos)
+        // El 'active' se quita antes de que empiece el siguiente ciclo
+        setTimeout(() => {
+            heroAnimation.classList.remove('active');
+        }, 5500); 
+    }
+
+    // Arrancamos a los 2 segundos de que cargó la web (como pediste)
+    setTimeout(runAnimation, 2000);
+
+    // Repetimos el ciclo cada 7 segundos para dejar 1.5s de "página vacía"
+    setInterval(runAnimation, 7000);
 }

@@ -944,32 +944,82 @@ details p {
     border-left: 3px solid rgba(0, 255, 150, 0.6);
 }
 
-/* Línea */
+/* Línea energía */
 .hero-animation .line {
-    width: 120px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    width: 140px;
+    height: 3px;
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        rgba(0,212,255,0.9),
+        rgba(255,255,255,0.6),
+        transparent
+    );
+
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
 }
 
-/* Punto animado */
+/* Punto con glow */
 .hero-animation .dot {
-    width: 10px;
-    height: 10px;
-    background: #00d4ff;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
     border-radius: 50%;
     position: absolute;
-    top: -4px;
+    top: -4.5px;
     left: 0;
-    box-shadow: 0 0 10px #00d4ff;
+
+    box-shadow:
+        0 0 10px #00d4ff,
+        0 0 20px rgba(0,212,255,0.8),
+        0 0 30px rgba(0,212,255,0.6);
 }
 
 /* Animaciones */
 @keyframes moveDot {
-    0% { left: 0; opacity: 1; }
-    80% { opacity: 1; }
-    100% { left: 100%; opacity: 0; }
+    0% {
+        left: 0;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+@keyframes popIn {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Cuando aparece el resultado */
+.hero-animation.active .message-end {
+    animation: popIn 0.5s ease forwards;
+    animation-delay: 1.8s;
 }
 
 @keyframes showMessage {

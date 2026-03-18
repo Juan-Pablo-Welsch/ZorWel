@@ -235,19 +235,14 @@ const heroAnimation = document.querySelector('.hero-animation');
 if (heroAnimation) {
 
     function runAnimation() {
-        // Activar animación
-        heroAnimation.classList.add('active');
+    heroAnimation.classList.add('active');
 
-        // Resetear después de que termina
-        setTimeout(() => {
-            heroAnimation.classList.remove('active');
-        }, 2500); // duración total
+    // Resetear después de que termina (le damos más tiempo, 4 segundos)
+    setTimeout(() => {
+        heroAnimation.classList.remove('active');
+    }, 4000); 
+}
 
-    }
-
-    // Primera ejecución
-    runAnimation();
-
-    // Loop cada 4 segundos
-    setInterval(runAnimation, 4000);
+// Loop cada 5.5 segundos para que haya un respiro entre animaciones
+setInterval(runAnimation, 5500);
 }

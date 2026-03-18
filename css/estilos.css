@@ -905,3 +905,80 @@ details p {
     from { transform: translateY(-50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+
+/* === HERO ANIMATION === */
+
+.hero-animation {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Mensajes */
+.hero-animation .message {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* Línea */
+.hero-animation .line {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Punto animado */
+.hero-animation .dot {
+    width: 10px;
+    height: 10px;
+    background: #00d4ff;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    left: 0;
+    box-shadow: 0 0 10px #00d4ff;
+}
+
+/* Animaciones */
+@keyframes moveDot {
+    0% { left: 0; opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes showMessage {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hideMessage {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Clases activadas por JS */
+.hero-animation.active .message-start {
+    animation: showMessage 0.5s forwards;
+}
+
+.hero-animation.active .dot {
+    animation: moveDot 2s forwards;
+}
+
+.hero-animation.active .message-end {
+    animation: showMessage 0.5s forwards;
+    animation-delay: 1.8s;
+}

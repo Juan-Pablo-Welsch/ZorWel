@@ -185,7 +185,7 @@ a:hover {
     color: #ffffff;
     text-shadow: 2px 2px 4px var(--shadow-light);
     margin-bottom: 1rem;
-    margin-top: 30px;
+    margin-top: 3px;
     line-height: 1.2;
 }
 
@@ -1079,7 +1079,7 @@ details p {
     font-weight: 800;
     color: #ffffff;
     line-height: 1.1; /* Unimos las líneas para que se vea como un bloque sólido */
-    margin-bottom: 2rem;
+    
     letter-spacing: -1px;
 }
 
@@ -1111,4 +1111,32 @@ details p {
     .hero-tagline {
         font-size: 1rem;
     }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto; /* Ya no ocupa toda la pantalla a la fuerza */
+        padding-top: 120px; /* Espacio justo para que no lo tape el Nav */
+        padding-bottom: 60px;
+        min-height: 80vh; /* Para que no quede demasiado apretado */
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem; /* Menos espacio abajo del título */
+        line-height: 1.2;
+    }
+
+    .hero-tagline {
+        margin-top: 10px; /* Subimos el "amanecer..." */
+        font-size: 0.9rem;
+    }
+
+    .hero-animation {
+        margin-top: 20px; /* Acercamos la animación al texto */
+    }
+}
+
+#mainNav {
+    padding: 0.8rem 0; /* Un poco más finito para que no robe tanto espacio visual */
 }

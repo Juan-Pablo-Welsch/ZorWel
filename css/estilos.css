@@ -989,3 +989,84 @@ details p {
     }
 }
 
+/* ===== HERO ESTILO DONWEB ===== */
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* TEXTO */
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+}
+
+/* BOTÓN (MUY IMPORTANTE) */
+.hero-btn {
+    background: var(--dark-color);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+
+/* VISUAL */
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+
+    .hero-visual {
+        margin-top: 2rem;
+    }
+}

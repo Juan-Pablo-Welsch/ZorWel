@@ -905,3 +905,87 @@ details p {
     from { transform: translateY(-50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+
+/* ===== HERO NUEVO (ZORWEL) ===== */
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Texto lado izquierdo */
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+/* Animación lado derecho */
+.hero-animation {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Cajas */
+.box {
+    background: #fff;
+    color: var(--dark-color);
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px var(--shadow-light);
+    z-index: 2;
+    white-space: nowrap;
+}
+
+/* Líneas */
+.line {
+    flex: 1;
+    height: 3px;
+    background: #fff;
+    margin: 0 10px;
+}
+
+/* Puntito animado */
+.moving-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--dark-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    animation: moveDot 4s linear infinite;
+}
+
+/* Animación */
+@keyframes moveDot {
+    0% { left: 0%; }
+    30% { left: 30%; }
+    60% { left: 60%; }
+    100% { left: 100%; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-animation {
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
+

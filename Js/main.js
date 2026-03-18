@@ -71,13 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Efecto de Máquina de Escribir ---
     if (typedTextElement) {
         const phrases = [
-            "Diseño web moderno.",
-            "Gestión de redes sociales.",
-            "Sitios optimizados para SEO."
-        ];
+    "Creamos tu web profesional.",
+    "Potenciamos tus redes sociales.",
+    "Hacemos crecer tu negocio online."
+];
         const typingDelay = 70;
         const eraseDelay = 30;
-        const newPhraseDelay = 1000;
+        const newPhraseDelay = 600;
         let phraseIndex = 0;
         let charIndex = 0;
 

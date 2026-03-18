@@ -203,6 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 ¡Gracias por contactarnos! Te responderemos pronto.
                             </div>
                         `;
+
+                        
                         contactForm.reset();
                     })
                     .catch((error) => {
@@ -225,3 +227,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// --- Animación Hero tipo DonWeb ---
+const heroAnimation = document.querySelector('.hero-animation');
+
+if (heroAnimation) {
+
+    function runAnimation() {
+        // Activar animación
+        heroAnimation.classList.add('active');
+
+        // Resetear después de que termina
+        setTimeout(() => {
+            heroAnimation.classList.remove('active');
+        }, 2500); // duración total
+
+    }
+
+    // Primera ejecución
+    runAnimation();
+
+    // Loop cada 4 segundos
+    setInterval(runAnimation, 4000);
+}

@@ -920,15 +920,28 @@ details p {
 
 /* Mensajes */
 .hero-animation .message {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 15, 0.75); /* más oscuro */
+    backdrop-filter: blur(12px);
     padding: 12px 18px;
     border-radius: 12px;
     font-size: 14px;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.1);
+    color: #ffffff;
+
+    border: 1px solid rgba(0, 212, 255, 0.25); /* borde con tu color */
+    
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.5),       /* profundidad */
+        0 0 10px rgba(0, 212, 255, 0.2);     /* glow suave */
+
     opacity: 0;
     transform: translateY(10px);
+}
+.message-start {
+    border-left: 3px solid rgba(0, 212, 255, 0.6);
+}
+
+.message-end {
+    border-left: 3px solid rgba(0, 255, 150, 0.6);
 }
 
 /* Línea */

@@ -115,36 +115,31 @@ a:hover {
 }
 
 .nav-list .nav-link {
-    color: #000000; /* Color de enlace blanco para que se lea contra el fondo transparente */
-    font-weight: 600;
-    font-size: 20px;
-    transition: color 0.3s ease, transform 0.2s ease;
-    padding: 5px 0;
-    position: relative; /* Necesario para el pseudoelemento de la línea */
+    color: #ffffff; /* Blanco puro para que resalte */
+    font-weight: 500;
+    font-size: 18px;
+    opacity: 0.8; /* Un poco traslúcido para que sea elegante */
+    transition: all 0.3s ease;
 }
 
-/* Estilos de la nueva línea animada */
-.nav-list .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--dark-color);
-    transition: width 0.3s ease;
-    color:black
+.nav-list .nav-link:hover {
+    color: var(--primary-color); /* Que brille en celeste al pasar el mouse */
+    opacity: 1;
+    transform: translateY(-2px);
 }
+
+/* Ajustamos la línea de abajo del hover */
+.nav-list .nav-link::after {
+    background-color: var(--primary-color); 
+}
+
+
 
 .nav-list .nav-link:hover::after {
     width: 100%;
 }
 
-.nav-list .nav-link:hover {
-    color: black;
-    transform: translateY(-2px);
-    text-decoration: none; /* Quitamos la decoración de texto predeterminada */
-}
+
 
 /* Estilos para el estado de scroll */
 #mainNav.navbar-scrolled .nav-list .nav-link {
@@ -188,10 +183,11 @@ a:hover {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
-    color: black;
-    text-shadow: 2px 2px 4px var(--shadow-medium);
+    font-size: 1.4rem;
+    color: var(--secondary-color); /* Verde flúor para que "salte" del fondo */
+    font-family: 'Menlo', monospace;
+    margin-top: 20px;
+    font-weight: 600;
 }
 
 /* Nuevos estilos para el cursor que se añadirán y eliminarán con JavaScript */
@@ -200,9 +196,18 @@ a:hover {
     vertical-align: bottom;
     width: 2px;
     height: 1.5rem; /* Ajustado para coincidir con el tamaño de la fuente */
-    background-color: var(--text-color);
+    background-color: var(--secondary-color);
     margin-left: 5px;
     animation: blink-caret .75s step-end infinite;
+    box-shadow: 0 0 8px var(--secondary-color);
+}
+
+#mainNav.navbar-scrolled .nav-list .nav-link {
+    color: var(--dark-color); /* Negro cuando bajás */
+}
+
+#mainNav.navbar-scrolled .nav-list .nav-link:hover {
+    color: var(--primary-color);
 }
 
 @keyframes blink-caret {
